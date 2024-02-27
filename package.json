@@ -1,0 +1,13 @@
+{
+  "name": "instashop-exercise",
+  "description": "skill assessment exercise for instashop",
+  "version": "0.0.1",
+  "author": "pavlos noulis <pavlos.noulis@gmail.com> (https://github.com/pnoulis)",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "make start",
+    "build": "make build"
+  }
+}

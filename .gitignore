@@ -1,0 +1,31 @@
+tmp/
+build/
+node_modules/
+package-lock.json
+
+# wsl2
+*:Zone.Identifier
+
+# emacs
+# cached changes
+\#*\#
+.#*
+*~
+.pdf-view-restore
+
+# vim
+:w
+
+# transient
+*.log
+*.logs
+*.out
+*.tar.gz
+
+# envars
+.env
+.env.*
+.env.*.local
+.env.local
+env.local
+env.*.local
