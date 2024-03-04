@@ -5,7 +5,6 @@
 ##################################################
 SHELL:=/usr/bin/bash
 .DEFAULT_GOAL:=all
-.DELETE_OR_ERROR:
 .SECONDEXPANSION:
 .ONESHELL:
 .EXPORT_ALL_VARIABLES:
@@ -45,12 +44,19 @@ build:
 ##################################################
 ## Start
 ##################################################
-start: parsed
-	@echo start
-
-parsed:
+start-client:
 	$(loadenv)
-	$(node) parsed.js
+	ng serve --port $$CLIENT_PORT
+
+start-server:
+	$(loadenv)
+	$(node) server/parsed.js
+
+stop-client:
+	-pkill -e --full 'ng serve'
+
+stop-server:
+	-pkill -e --full 'parsed.js'
 
 ##################################################
 # run
@@ -86,17 +92,16 @@ run: $(file)
 # clean
 ##################################################
 clean:
+	-rm -f *.log
+	-rm -f .#*
 	find $(srcdir_top) -name '*~' -exec rm {} \;
 
 ##################################################
 # distclean
 ##################################################
 distclean: clean
-	-rm -f *.log
-	-rm -f .#*
 	-rm -rf node_modules
 	-rm -f package-lock.json
-	-rm -f config.*
 
 
 # Develop
