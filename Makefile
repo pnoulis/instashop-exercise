@@ -1,15 +1,24 @@
 #!/usr/bin/make
 
+##################################################
+# Make configuration
+##################################################
 SHELL:=/usr/bin/bash
 .DEFAULT_GOAL:=all
 .DELETE_OR_ERROR:
 .SECONDEXPANSION:
-.ONESHELl:
+.ONESHELL:
+.EXPORT_ALL_VARIABLES:
+
+##################################################
+# Environment
+##################################################
+loadenv=set -a; source ./.env
 
 ##################################################
 ## Application
 ##################################################
-app_name=instashop-exercise
+app_name=$(APP_NAME)
 app_version=0.0.1
 app_distname=$(app_name)-v$(app_version)
 
@@ -17,13 +26,13 @@ app_distname=$(app_name)-v$(app_version)
 ## Directories
 ##################################################
 srcdir_top=.
-srcdir=$(srcdir)/src
-buildir=$(srcdir)/build
+srcdir=$(srcdir_top)/src
+buildir=$(srcdir_top)/build
 
 ##################################################
 ## Programs
 ##################################################
-node:=$()
+node:=~/.nvm/versions/node/v20.0.0/bin/node
 
 all: build
 
@@ -36,20 +45,24 @@ build:
 ##################################################
 ## Start
 ##################################################
-start:
+start: parsed
 	@echo start
+
+parsed:
+	$(loadenv)
+	$(node) parsed.js
 
 ##################################################
 # run
 ##################################################
 run: file?=tmp/scratch.js
-run: dotenv $(file)
+run: $(file)
 	@if [[ "$${file:-}" == "" ]]; then
 	echo "Usage: 'make run file [args]'"
 	exit 1
 	fi
-	extension="$${file##*.}"
 	$(loadenv)
+	extension="$${file##*.}"
 	case $$extension in
 	sh)
 	$(SHELL) $(file) $(args)
@@ -75,14 +88,12 @@ run: dotenv $(file)
 clean:
 	find $(srcdir_top) -name '*~' -exec rm {} \;
 
-
 ##################################################
 # distclean
 ##################################################
 distclean: clean
 	-rm -f *.log
 	-rm -f .#*
-	-rm -rf $(buildir)
 	-rm -rf node_modules
 	-rm -f package-lock.json
 	-rm -f config.*

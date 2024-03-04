@@ -1,13 +1,14 @@
 {
   "name": "instashop-exercise",
-  "description": "skill assessment exercise for instashop",
-  "version": "0.0.1",
-  "author": "pavlos noulis <pavlos.noulis@gmail.com> (https://github.com/pnoulis)",
-  "license": "UNLICENSED",
-  "private": true,
-  "type": "module",
+  "description": "parse-server for instashop-exercise",
   "scripts": {
-    "start": "make start",
-    "build": "make build"
-  }
+    "start": "parse-server config.json",
+    "dashboard": "parse-dashboard --config=parse-dashboard.config.json"
+  },
+  "dependencies": {
+    "express": "^4.18.3",
+    "parse-dashboard": "^5.3.0",
+    "parse-server": "^6.5.0"
+  },
+  "type": "module"
 }
