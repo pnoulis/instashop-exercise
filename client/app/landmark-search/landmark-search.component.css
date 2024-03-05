@@ -1,0 +1,60 @@
+form {
+  z-index: 2;
+  display: flex;
+  max-width: 450px;
+  flex-flow: row wrap;
+  row-gap: 6px;
+  align-items: center;
+}
+
+
+label {
+  font-weight: 550;
+  font-size: 1.4em;
+  text-transform: capitalize;
+  flex: 1 0 100%;
+  font-family: "Comic Sans MS";
+  letter-spacing: 2px;
+  margin-left: 2px;
+}
+
+button {
+  background-color: rgba(255, 99, 71, 80%);
+  flex: 1;
+  display: flex;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  background-color: rgba(255, 99, 71, 100%);
+}
+
+button .text {
+  position: relative;
+  top: 1px;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+input {
+  flex: 1 0 62%;
+  background-color: rgba(255, 99, 71, 10%);
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 4px;
+  display: inline-block;
+  width: 30%;
+  font-family: Roboto;
+  font-weight: 550;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+
+input::placeholder {
+  font-family: Roboto;
+}

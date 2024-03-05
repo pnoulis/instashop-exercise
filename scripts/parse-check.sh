@@ -2,4 +2,6 @@
 
 curl -X GET \
      -H "X-Parse-Application-Id: $APP_ID" \
-     ${SERVER_URL}/classes/Landmark
+     -d "username=${LOGIN_USERNAME}" \
+     -d "password=${LOGIN_PASSWORD}" \
+     ${PUBLIC_SERVER_URL}/login

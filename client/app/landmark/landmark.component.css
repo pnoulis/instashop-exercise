@@ -34,12 +34,13 @@
   position: relative;
   top: 15px;
   float: left;
-  margin: 5px 15px 4px 0;
+  margin: 5px 15px 10px 0;
 }
 
 .landmark-info {
   text-align: left;
   line-height: 25px;
+  font-size: 1.2em;
 }
 
 /* .landmark-location { */

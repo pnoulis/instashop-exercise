@@ -1,15 +1,22 @@
-import { Component, inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandmarkService } from '../landmark.service';
 import { LandmarkComponent } from '../landmark/landmark.component';
 import { Landmark } from '../landmark';
 import { LandmarkModalComponent } from '../landmark-modal/landmark-modal.component';
+import { LandmarkSearchComponent } from '../landmark-search/landmark-search.component';
 
 @Component({
   selector: 'landmark-list',
   standalone: true,
-  imports: [CommonModule, LandmarkComponent, LandmarkModalComponent],
+  imports: [
+    CommonModule,
+    LandmarkComponent,
+    LandmarkModalComponent,
+    LandmarkSearchComponent,
+  ],
   template: `
+    <landmark-search></landmark-search>
     <landmark-modal></landmark-modal>
     <ul class="landmark-list">
       <landmark
