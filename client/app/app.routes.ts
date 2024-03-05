@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { LandmarkListComponent } from './landmarks-list/landmark-list.component';
+import { LandmarkListComponent } from './landmark-list/landmark-list.component';
 import { LandmarkDetailsComponent } from './landmark-details/landmark-details.component';
 
 export const routes: Routes = [

@@ -12,6 +12,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
         class="landmark-photo"
         [src]="landmark.photo_thumb"
         alt="photo of {{ landmark.title }}"
+        (click)="onThumbClick()"
       />
       <a [routerLink]="['/landmarks', landmark.objectId]">
         <h2 class="landmark-title">
@@ -27,4 +28,5 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class LandmarkComponent {
   @Input() landmark!: Landmark;
+  @Input() onThumbClick!: () => void;
 }
