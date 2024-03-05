@@ -24,6 +24,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "client/environment.ts",
+                  "with": "env.angular.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -41,7 +47,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "client/environment.ts",
+                  "with": "env.angular.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

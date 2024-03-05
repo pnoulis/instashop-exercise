@@ -44,7 +44,7 @@ build:
 ##################################################
 ## Start
 ##################################################
-start-client:
+start-client: env
 	$(loadenv)
 	ng serve --port $$CLIENT_PORT
 
@@ -89,11 +89,20 @@ run: $(file)
 	fi
 
 ##################################################
+# Environment
+##################################################
+env: env.angular.ts
+
+env.angular.ts: .env
+	echo "export const environment = $$(node scripts/getenv.js)" > $@
+
+##################################################
 # clean
 ##################################################
 clean:
 	-rm -f *.log
 	-rm -f .#*
+	-rm -f env.*
 	find $(srcdir_top) -name '*~' -exec rm {} \;
 
 ##################################################

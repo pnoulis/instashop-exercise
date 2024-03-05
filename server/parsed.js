@@ -3,7 +3,7 @@ import { ParseServer } from "parse-server";
 import { default as ParseDashboard } from "parse-dashboard";
 import { URL } from "node:url";
 
-const url = new URL(process.env.PUBLIC_SERVER_URL);
+const url = new URL(process.env.SERVER_URL);
 const config = {
   appName: process.env.APP_NAME,
   port: process.env.SERVER_PORT || 5000,
