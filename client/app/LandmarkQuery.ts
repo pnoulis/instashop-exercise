@@ -57,7 +57,7 @@ class LandmarkQuery extends Query {
     //////////////////////////////////////////////////
     // 4th approach
     //////////////////////////////////////////////////
-    const url = new URL(`${environment.PUBLIC_SERVER_URL}/classes/ILandmark`);
+    const url = new URL(`${environment.PUBLIC_SERVER_URL}/classes/Landmark`);
     url.searchParams.append(
       'where',
       JSON.stringify({

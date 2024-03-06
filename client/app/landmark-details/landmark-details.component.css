@@ -1,0 +1,112 @@
+.landmark {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content;
+  gap: 30px 100px;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.landmark.Edit {
+  grid-template-columns: max-content 1fr;
+  align-items: start;
+}
+
+.right-panel {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 50px;
+  text-align: left;
+}
+
+label {
+  letter-spacing: 1.5px;
+  font-size: 1.4em;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+label::after {
+  content: ":";
+  font-weight: 600;
+  font-size: 1.4em;
+  margin-left: 5px;
+}
+
+input {
+  padding: 12px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: white;
+  box-shadow:
+    rgba(17, 17, 26, 0.1) 0px 0px 16px,
+    rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 2px;
+  border: 4px solid transparent;
+}
+
+
+header {
+  grid-column: 1 / span 2;
+}
+
+.edit {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  padding: 5px 15px;
+  transform: translate(100%, -100%);
+  cursor: pointer;
+  font-size: 0.8em;
+  color: rgba(30, 144, 255, 70%);
+  text-transform: lowercase;
+}
+
+.edit:hover {
+  color: rgba(30, 144, 255, 100%);
+}
+
+figcaption a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  color: rgba(255, 99, 71, 100%);
+  font-size: 1.2em;
+  letter-spacing: 1.5px;
+}
+figcaption a:hover {
+  color: red;
+}
+
+img {
+  display: block;
+  border-radius: 15px;
+  object-fit: contain;
+}
+
+h1 {
+  position: relative;
+  justify-self: center;
+  letter-spacing: 1.5px;
+  font-size: 1.4em;
+  color: rgba(255, 99, 71, 100%);
+  text-transform: capitalize;
+  font-weight: 600;
+  text-align: center;
+  width: max-content;
+  margin: auto;
+}
+
+.text {
+  font-size: 1.1em;
+  font-family: Roboto;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  white-space: wrap;
+  font-weight: 450;
+  line-height: 30px;
+  overflow-wrap: anywhere;
+  overflow: scroll;
+}

@@ -8,7 +8,6 @@ import { environment } from 'env.angular';
   imports: [RouterOutlet],
   template: `
     <main class="app">
-      <h1>InstaShop</h1>
       <section class="content">
         <router-outlet />
       </section>
