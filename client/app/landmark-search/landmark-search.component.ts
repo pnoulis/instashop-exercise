@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -6,13 +6,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [ReactiveFormsModule],
   template: `
-    <form [formGroup]="searchLandmarkForm" (submit)="handleSearch()">
-      <label for="landmarkName">landmarks</label>
+    <form
+      [formGroup]="searchLandmarkForm"
+      (submit)="onSearchLandmark(searchLandmarkForm.controls.title.value)"
+    >
+      <label for="title">landmarks</label>
       <input
-        id="landmarkName"
+        id="title"
         type="text"
         placeholder="burj..."
-        formControlName="landmarkName"
+        [formControl]="searchLandmarkForm.controls.title"
       />
       <button type="submit"><span class="text">search</span></button>
     </form>
@@ -21,10 +24,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class LandmarkSearchComponent {
   searchLandmarkForm = new FormGroup({
-    landmarkName: new FormControl(''),
+    title: new FormControl(''),
   });
 
-  handleSearch() {
-    console.log('yolo');
-  }
+  @Input() onSearchLandmark!: (searchTerm: string | null) => void;
 }

@@ -32,6 +32,7 @@ buildir=$(srcdir_top)/build
 ## Programs
 ##################################################
 node:=~/.nvm/versions/node/v20.0.0/bin/node
+nodeflags:=--import $(srcdir_top)/debug.js
 
 all: build
 
@@ -74,7 +75,7 @@ run: $(file)
 	$(SHELL) $(file) $(args)
 	;;
 	js | mjs)
-	$(node) $(file) $(args)
+	$(node) $(nodeflags) $(file) $(args)
 	;;
 	*)
 	echo "Unrecognized extension: $$extension"
@@ -103,6 +104,7 @@ clean:
 	-rm -f *.log
 	-rm -f .#*
 	-rm -f env.*
+	-rm -rf logs
 	find $(srcdir_top) -name '*~' -exec rm {} \;
 
 ##################################################

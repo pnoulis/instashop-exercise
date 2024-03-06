@@ -18,7 +18,4 @@ import { environment } from 'env.angular';
 })
 export class AppComponent {
   title = 'InstaShop';
-  constructor() {
-    console.log(environment);
-  }
 }

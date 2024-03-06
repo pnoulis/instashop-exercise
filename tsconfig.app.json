@@ -4,6 +4,7 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "baseUrl": "./",
+    "allowJs": true,
     "types": []
   },
   "files": ["client/main.ts"],
