@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LandmarkService } from '../landmark.service';
 import { LandmarkComponent } from '../landmark/landmark.component';
-import { Landmark } from '../landmark';
+import { ILandmark } from "../ILandmark";
 import { LandmarkModalComponent } from '../landmark-modal/landmark-modal.component';
 import { LandmarkSearchComponent } from '../landmark-search/landmark-search.component';
 
@@ -40,11 +40,11 @@ export class LandmarkListComponent {
   landmarkModal!: LandmarkModalComponent;
 
   landmarkService: LandmarkService = inject(LandmarkService);
-  landmarkList: Landmark[] = [];
+  landmarkList: ILandmark[] = [];
 
   router: Router = new Router();
 
-  showThumbPopup(landmark: Landmark) {
+  showThumbPopup(landmark: ILandmark) {
     this.landmarkModal.showLandmarkPhoto(landmark);
   }
 

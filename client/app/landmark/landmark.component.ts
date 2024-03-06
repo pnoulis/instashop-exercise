@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Landmark } from '../landmark';
+import { ILandmark } from "../ILandmark";
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
         alt="photo of {{ landmark.title }}"
         (click)="onThumbClick()"
       />
-      <a [routerLink]="['/landmarks', landmark.objectId]">
+      <a [routerLink]="['/landmarks', landmark.id]" [state]="landmark">
         <h2 class="landmark-title">
           {{ landmark.title }}
         </h2>
@@ -27,6 +27,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './landmark.component.css',
 })
 export class LandmarkComponent {
-  @Input() landmark!: Landmark;
+  @Input() landmark!: ILandmark;
   @Input() onThumbClick!: () => void;
 }

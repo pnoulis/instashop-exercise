@@ -45,3 +45,17 @@ Thumbs.db
 *.log
 .env
 env.*
+
+
+# emacs
+# cached changes
+\#*\#
+.#*
+*~
+.pdf-view-restore
+
+# vim
+:w
+
+# wsl2
+*:Zone.Identifier

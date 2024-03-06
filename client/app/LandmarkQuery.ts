@@ -1,5 +1,5 @@
 import { Query } from './Query';
-import { Landmark } from './landmark';
+import { ILandmark } from './ILandmark';
 import { environment } from '../../env.angular';
 
 class LandmarkQuery extends Query {
@@ -7,11 +7,11 @@ class LandmarkQuery extends Query {
     super('Landmark');
   }
 
-  getAll(): Promise<Landmark[]> {
-    return new LandmarkQuery().find<Landmark>();
+  getAll(): Promise<ILandmark[]> {
+    return new LandmarkQuery().find<ILandmark>();
   }
 
-  search(key: string, value: string | null): Promise<Landmark[]> {
+  search(key: string, value: string | null): Promise<ILandmark[]> {
     if (arguments.length === 1) {
       value = key;
       key = 'title';
@@ -24,13 +24,13 @@ class LandmarkQuery extends Query {
     //////////////////////////////////////////////////
     // 1st approach
     //////////////////////////////////////////////////
-    // return new LandmarkQuery().startsWith(key, value).find<Landmark>();
+    // return new LandmarkQuery().startsWith(key, value).find<ILandmark>();
     // case Sensitive
 
     //////////////////////////////////////////////////
     // 2nd approarch
     //////////////////////////////////////////////////
-    // return new LandmarkQuery().fullText(key, value).find<Landmark>();
+    // return new LandmarkQuery().fullText(key, value).find<ILandmark>();
     // case Insensitive, but returns erroneous results.
     // For example:
     // When searching for burj
@@ -49,15 +49,15 @@ class LandmarkQuery extends Query {
     // slower
     // const titleRe = new RegExp(value, 'i');
     // return new LandmarkQuery()
-    //   .find<Landmark>()
-    //   .then((landmarks: Landmark[]) =>
-    //     landmarks.filter((landmark: Landmark) => titleRe.test(landmark.title)),
+    //   .find<ILandmark>()
+    //   .then((landmarks: ILandmark[]) =>
+    //     landmarks.filter((landmark: ILandmark) => titleRe.test(landmark.title)),
     //   );
 
     //////////////////////////////////////////////////
     // 4th approach
     //////////////////////////////////////////////////
-    const url = new URL(`${environment.PUBLIC_SERVER_URL}/classes/Landmark`);
+    const url = new URL(`${environment.PUBLIC_SERVER_URL}/classes/ILandmark`);
     url.searchParams.append(
       'where',
       JSON.stringify({

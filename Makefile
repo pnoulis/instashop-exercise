@@ -33,6 +33,7 @@ buildir=$(srcdir_top)/build
 ##################################################
 node:=~/.nvm/versions/node/v20.0.0/bin/node
 nodeflags:=--import $(srcdir_top)/debug.js
+tsnode:=~/.nvm/versions/node/v21.0.0/bin/tsx
 
 all: build
 
@@ -76,6 +77,9 @@ run: $(file)
 	;;
 	js | mjs)
 	$(node) $(nodeflags) $(file) $(args)
+	;;
+	ts)
+	$(tsnode) $(nodeflags) $(file) $(args)
 	;;
 	*)
 	echo "Unrecognized extension: $$extension"
