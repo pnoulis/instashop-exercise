@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LandmarkService } from '../landmark.service';
 import { LandmarkComponent } from '../landmark/landmark.component';
-import { ILandmark } from "../ILandmark";
+import { ILandmark } from '../ILandmark';
 import { LandmarkModalComponent } from '../landmark-modal/landmark-modal.component';
 import { LandmarkSearchComponent } from '../landmark-search/landmark-search.component';
 
@@ -56,8 +56,6 @@ export class LandmarkListComponent {
     });
   }
   async loadLandmarks(key: string, value: string | null) {
-    this.landmarkList = await (value
-      ? this.landmarkService.search(key, value)
-      : this.landmarkService.getAll());
+    this.landmarkList = await this.landmarkService.searchLandmark(key, value);
   }
 }

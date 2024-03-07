@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ILandmark } from '../ILandmark';
 import { LandmarkService } from '../landmark.service';
 import { LandmarkComponent } from '../landmark/landmark.component';
@@ -9,16 +9,22 @@ import { LandmarkComponent } from '../landmark/landmark.component';
 @Component({
   selector: 'landmark-details',
   standalone: true,
-  imports: [ReactiveFormsModule, LandmarkComponent, CommonModule],
+  imports: [ReactiveFormsModule, LandmarkComponent, CommonModule, RouterLink],
   template: `
-    <form class="landmark Edit" *ngIf="this.edit === true">
+    <form
+      [formGroup]="landmarkForm"
+      (submit)="handleLandmarkUpdate()"
+      class="landmark Edit"
+      *ngIf="this.edit === true"
+    >
       <header>
         <h1>
           {{ landmark.title }}
-          <sup class="edit" (click)="handleLandmarkEdit()">cancel</sup>
         </h1>
-        <button>cancel</button>
-        <button>save</button>
+        <button type="button" class="text" (click)="handleLandmarkEdit()">
+          cancel
+        </button>
+        <button type="submit" class="text">save</button>
       </header>
       <label for="title">title</label>
       <input
@@ -29,47 +35,52 @@ import { LandmarkComponent } from '../landmark/landmark.component';
       />
 
       <label for="short_info">short info</label>
-      <input
+      <textarea
         class="text"
         id="short_info"
         type="text"
-        [formControl]="landmarkForm.controls.title"
-      />
+        [formControl]="landmarkForm.controls.short_info"
+      ></textarea>
       <label for="description">description</label>
-      <input
+      <textarea
         class="text"
         id="description"
         type="text"
-        [formControl]="landmarkForm.controls.title"
-      />
+        [formControl]="landmarkForm.controls.description"
+      ></textarea>
       <label for="url">url</label>
-      <input
+      <textarea
         class="text"
         id="url"
         type="text"
-        [formControl]="landmarkForm.controls.title"
-      />
+        [formControl]="landmarkForm.controls.url"
+      ></textarea>
       <label for="photo_thumb">photo thumbnail</label>
-      <input
+      <textarea
         class="text"
         id="photo_thumb"
         type="text"
-        [formControl]="landmarkForm.controls.title"
-      />
+        [formControl]="landmarkForm.controls.photo_thumb"
+      ></textarea>
       <label for="photo">photo</label>
-      <input
+      <textarea
         class="text"
         id="photo"
         type="text"
-        [formControl]="landmarkForm.controls.title"
-      />
+        [formControl]="landmarkForm.controls.photo"
+      ></textarea>
     </form>
     <div class="landmark" *ngIf="edit === false">
       <header>
         <h1>
           {{ landmark.title }}
-          <sup class="edit" (click)="handleLandmarkEdit()">edit</sup>
         </h1>
+        <button type="button" class="text">
+          <a [routerLink]="['/']">landmarks</a>
+        </button>
+        <button type="button" class="text" (click)="handleLandmarkEdit()">
+          edit
+        </button>
       </header>
       <section>
         <figure>
@@ -100,6 +111,9 @@ export class LandmarkDetailsComponent {
     title: new FormControl(''),
     short_info: new FormControl(''),
     description: new FormControl(''),
+    url: new FormControl(''),
+    photo_thumb: new FormControl(''),
+    photo: new FormControl(''),
   });
 
   constructor(private router: Router) {
@@ -110,10 +124,19 @@ export class LandmarkDetailsComponent {
       title: this.landmark.title,
       short_info: this.landmark.short_info,
       description: this.landmark.description,
+      url: this.landmark.url,
+      photo_thumb: this.landmark.photo_thumb,
+      photo: this.landmark.photo,
     });
   }
 
   handleLandmarkEdit() {
     this.edit = !this.edit;
+  }
+
+  async handleLandmarkUpdate() {
+    this.landmark = await this.landmarkService.updateLandmark(
+      Object.assign({}, this.landmark, this.landmarkForm.value),
+    );
   }
 }

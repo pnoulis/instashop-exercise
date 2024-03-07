@@ -18,6 +18,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
         [formControl]="searchLandmarkForm.controls.title"
       />
       <button type="submit"><span class="text">search</span></button>
+      <button type="button"><span class="text">refresh</span></button>
     </form>
   `,
   styleUrl: './landmark-search.component.css',

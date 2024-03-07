@@ -12,8 +12,29 @@ class LandmarkService extends LandmarkQuery {
     super();
   }
 
-  createLandmark(landmark: any) {
+  public createLandmark(landmark: any) {
     return new Landmark(landmark);
+  }
+
+  public async updateLandmark(landmark: object) {
+    const ln = this.createLandmark(landmark);
+    try {
+      await ln.save();
+    } catch (err: any) {
+      if (err.code === 119) {
+        throw new Error('Must login first', { cause: err });
+      }
+      throw err;
+    }
+    return ln;
+  }
+
+  public async getAllLandmarks() {
+    return super.getAll();
+  }
+
+  public async searchLandmark(key: string, value: string | null) {
+    return value ? super.search(key, value) : super.getAll();
   }
 }
 
