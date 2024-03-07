@@ -105,7 +105,7 @@ export class LandmarkDetailsComponent {
   landmark!: ILandmark;
   landmarkService: LandmarkService = inject(LandmarkService);
 
-  edit: boolean = true;
+  edit: boolean = false;
 
   landmarkForm = new FormGroup({
     title: new FormControl(''),
