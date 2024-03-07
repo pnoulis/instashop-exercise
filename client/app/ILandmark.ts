@@ -8,5 +8,4 @@ export interface ILandmark {
   photo: string;
   url: string;
   location: Array<number>;
-  className: string;
 }

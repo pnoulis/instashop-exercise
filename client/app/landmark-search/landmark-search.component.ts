@@ -11,8 +11,8 @@ import { RouterLink } from '@angular/router';
       [formGroup]="searchLandmarkForm"
       (submit)="onSearchLandmark(searchLandmarkForm.controls.title.value)"
     >
-      <label for="title">landmarks</label>
       <input
+        autoFocus
         id="title"
         type="text"
         placeholder="burj..."

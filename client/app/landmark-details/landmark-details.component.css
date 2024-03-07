@@ -87,24 +87,8 @@ header button {
   border-radius: 12px;
 }
 
-header button:hover {
+header button:hover, header button:focus {
   background-color: rgba(255, 99, 71, 100%);
-}
-
-.edit {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  padding: 5px 15px;
-  transform: translate(100%, -100%);
-  cursor: pointer;
-  font-size: 0.8em;
-  color: rgba(30, 144, 255, 70%);
-  text-transform: lowercase;
-}
-
-.edit:hover {
-  color: rgba(30, 144, 255, 100%);
 }
 
 figcaption a {
@@ -116,7 +100,7 @@ figcaption a {
   font-size: 1.2em;
   letter-spacing: 1.5px;
 }
-figcaption a:hover {
+figcaption a:hover, figcaption a:focus {
   color: red;
 }
 

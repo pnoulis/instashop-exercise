@@ -22,7 +22,7 @@ import { LandmarkComponent } from '../landmark/landmark.component';
           {{ landmark.title }}
         </h1>
         <button type="button" class="text" (click)="handleLandmarkEdit()">
-          cancel
+          back
         </button>
         <button type="submit" class="text">save</button>
       </header>
@@ -32,6 +32,13 @@ import { LandmarkComponent } from '../landmark/landmark.component';
         id="title"
         type="text"
         [formControl]="landmarkForm.controls.title"
+      />
+      <label for="order">order</label>
+      <input
+        class="text"
+        id="order"
+        type="text"
+        [formControl]="landmarkForm.controls.order"
       />
 
       <label for="short_info">short info</label>
@@ -109,6 +116,7 @@ export class LandmarkDetailsComponent {
 
   landmarkForm = new FormGroup({
     title: new FormControl(''),
+    order: new FormControl(0),
     short_info: new FormControl(''),
     description: new FormControl(''),
     url: new FormControl(''),
@@ -122,6 +130,7 @@ export class LandmarkDetailsComponent {
     );
     this.landmarkForm.setValue({
       title: this.landmark.title,
+      order: this.landmark.order,
       short_info: this.landmark.short_info,
       description: this.landmark.description,
       url: this.landmark.url,

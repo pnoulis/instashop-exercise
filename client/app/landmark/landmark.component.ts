@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ILandmark } from "../ILandmark";
+import { ILandmark } from '../ILandmark';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({

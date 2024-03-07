@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { ILandmark } from "../ILandmark";
+import { ILandmark } from '../ILandmark';
 
 @Component({
   selector: 'landmark-modal',
@@ -7,11 +7,14 @@ import { ILandmark } from "../ILandmark";
   template: `
     <dialog class="modal" #dialog>
       <button class="modal-close" (click)="dialog.close()"></button>
-      <img
-        class="modal-photo"
-        [src]="landmark?.photo"
-        alt="photo of {{ landmark?.title }}"
-      />
+      <figure>
+        <figcaption>{{ landmark?.title }}</figcaption>
+        <img
+          class="modal-photo"
+          [src]="landmark?.photo"
+          alt="photo of {{ landmark?.title }}"
+        />
+      </figure>
     </dialog>
   `,
   styleUrl: './landmark-modal.component.css',

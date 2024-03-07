@@ -9,7 +9,7 @@ user.set("password", "admin");
 console.log(user.get("username"));
 user
   .logIn()
-  .then((args) => console.log(args.attributes.ACL))
+  .then((args) => console.log(args.attributes))
   .catch((err) => console.log(err));
 
 // const qUser = new Parse.Query("User");

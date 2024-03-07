@@ -1,3 +1,33 @@
+header {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 30px;
+  justify-content: end;
+}
+
+a {
+  /* width: max-content; */
+  order: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  font-weight: 550;
+  font-size: 1.4em;
+  text-transform: capitalize;
+  font-family: "Comic Sans MS";
+  letter-spacing: 2px;
+  border-radius: 7px;
+  background-color: rgba(255, 99, 71, 80%);
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+}
+
+a:hover, a:focus {
+  background-color: rgba(255, 99, 71, 100%);
+}
+
 .landmark-list {
   display: grid;
   column-gap: 20px;

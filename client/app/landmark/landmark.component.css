@@ -1,11 +1,9 @@
 .landmark {
   list-style-type: none;
-  background: var(--accent-color);
   width: 100%;
   box-sizing: border-box;
   padding: 12px 20px;
   border-radius: 15px;
-  cursor: pointer;
   background-color: white;
   box-shadow:
     rgba(17, 17, 26, 0.1) 0px 0px 16px,
@@ -13,13 +11,12 @@
     rgba(17, 17, 26, 0.05) 0px 8px 2px;
   border: 4px solid transparent;
 }
-.landmark:hover {
+.landmark:hover, .landmark:focus {
   border-color: rgba(255, 99, 71, 100%);
 }
 
 .landmark-title {
   margin: 0;
-  color: var(--primary-color);
   text-align: center;
   font-size: 1.4em;
   font-weight: 550;
@@ -27,35 +24,22 @@
   color: rgba(255, 99, 71, 100%);
   letter-spacing: 1px;
 }
+.landmark-title:hover {
+  color: red;
+}
 .landmark-photo {
   height: 150px;
-  width: 150px;
   border-radius: 15px;
   position: relative;
   top: 15px;
   float: left;
   margin: 5px 15px 10px 0;
+  cursor: pointer;
 }
 
 .landmark-info {
   text-align: left;
   line-height: 25px;
   font-size: 1.2em;
+  cursor: default;
 }
-
-/* .landmark-location { */
-/*   padding: 10px 20px 20px 20px; */
-/* } */
-/* .landmark-location::before { */
-/*   content: url("/assets/location-pin.svg") / ""; */
-/* } */
-
-/* section.landmark a { */
-/*   padding-left: 20px; */
-/*   text-decoration: none; */
-/*   color: var(--primary-color); */
-/* } */
-/* section.landmark a::after { */
-/*   content: "\203A"; */
-/*   margin-left: 5px; */
-/* } */
