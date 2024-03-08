@@ -42,6 +42,7 @@ import { AuthService } from '../auth.service';
 export class LandmarkListComponent {
   constructor(private activatedRoute: ActivatedRoute) {
     this.loadLandmarks('title', activatedRoute.snapshot.queryParams['title']);
+    debug('LANDMARKS LISt');
   }
 
   @ViewChild(LandmarkModalComponent, { read: LandmarkModalComponent })

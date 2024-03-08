@@ -22,10 +22,15 @@ class LandmarkService extends LandmarkQuery {
   public async updateLandmark(landmark: object) {
     const _landmark = this.createLandmark(landmark);
     const user = this.authService.getUser();
-    await new Parse.Object('Landmark', _landmark).save(null, {
-      sessionToken: user?.['sessionToken'],
-    });
-    alert('saved!');
+    const land = new Parse.Object('Landmark', _landmark);
+    try {
+      await land.save(null, {
+        sessionToken: user?.['sessionToken'],
+      });
+    } catch (err) {
+      land.revert();
+      throw err;
+    }
     return _landmark;
   }
 
@@ -33,7 +38,10 @@ class LandmarkService extends LandmarkQuery {
     return super.getAll();
   }
 
-  public async searchLandmark(key: string, value: string | null) {
+  public searchLandmark(
+    key: string,
+    value: string | null,
+  ): Promise<ILandmark[]> {
     return value ? super.search(key, value) : super.getAll();
   }
 }

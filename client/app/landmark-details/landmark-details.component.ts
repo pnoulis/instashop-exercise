@@ -5,11 +5,19 @@ import { Router, RouterLink } from '@angular/router';
 import { ILandmark } from '../ILandmark';
 import { LandmarkService } from '../landmark.service';
 import { LandmarkComponent } from '../landmark/landmark.component';
+import { GoogleMapsModule, MapMarker } from '@angular/google-maps';
 
 @Component({
   selector: 'landmark-details',
   standalone: true,
-  imports: [ReactiveFormsModule, LandmarkComponent, CommonModule, RouterLink],
+  imports: [
+    ReactiveFormsModule,
+    LandmarkComponent,
+    CommonModule,
+    RouterLink,
+    GoogleMapsModule,
+    MapMarker,
+  ],
   template: `
     <form
       [formGroup]="landmarkForm"
@@ -98,8 +106,24 @@ import { LandmarkComponent } from '../landmark/landmark.component';
             >
           </figcaption>
         </figure>
-        <section>google maps</section>
+        <section class="gmaps">
+          <google-map
+            width="100%"
+            [options]="{
+              center: { lat: landmark.location[1], lng: landmark.location[0] }
+            }"
+          >
+            <map-marker
+              [position]="{
+                lat: landmark.location[1],
+                lng: landmark.location[0]
+              }"
+              [label]="{ color: 'red', text: 'label' }"
+            ></map-marker>
+          </google-map>
+        </section>
       </section>
+
       <section class="right-panel">
         <p class="text" id="short_info">{{ landmark.short_info }}</p>
         <p class="text" id="description">{{ landmark.description }}</p>
@@ -125,9 +149,9 @@ export class LandmarkDetailsComponent {
   });
 
   constructor(private router: Router) {
-    this.landmark = this.landmarkService.createLandmark(
-      this.router.getCurrentNavigation()?.extras.state,
-    );
+    this.landmark = this.landmarkService.createLandmark({
+      ...this.router.getCurrentNavigation()?.extras.state,
+    });
     this.landmarkForm.setValue({
       title: this.landmark.title,
       order: this.landmark.order,
@@ -144,8 +168,10 @@ export class LandmarkDetailsComponent {
   }
 
   async handleLandmarkUpdate() {
-    this.landmark = await this.landmarkService.updateLandmark(
-      Object.assign({}, this.landmark, this.landmarkForm.value),
-    );
+    const landmark = await this.landmarkService.updateLandmark({
+      id: this.landmark.id,
+      ...this.landmarkForm.value,
+    });
+    this.landmark = landmark;
   }
 }

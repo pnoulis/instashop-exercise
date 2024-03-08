@@ -110,6 +110,7 @@ img {
   object-fit: contain;
 }
 
+
 h1 {
   position: absolute;
   left: 50%;
@@ -133,4 +134,8 @@ h1 {
   font-weight: 450;
   line-height: 30px;
   overflow-wrap: anywhere;
+}
+
+.gmaps {
+  margin-top: 40px;
 }
