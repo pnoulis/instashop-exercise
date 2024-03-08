@@ -2,9 +2,159 @@
 
 Skill assessment exercise for instashop.
 
-## Installation
+Develop a 3 page application with:
+
+- Authentication
+
+- Read, Update, capability
+
+- Some rudimentary Routing logic
+
+- Filtering / search input
+
+## Install
+### Prerequisites
+
+#### Install Microsoft Windows Subsystem for Linux (wsl)
+
+```sh
+
+# How to install wsl2
+https://learn.microsoft.com/en-us/windows/wsl/install
+
+# Install wsl2
+wsl --install
+
+# Set distribution wsl version to 2
+wsl --set-default-version 2
+
+# List available distros
+wsl -l -v
+
+# Ensure the default installed wsl distro is at version 2
+wsl --set-version <distro name> 2
+# Example
+wsl --set-version Ubuntu-20.04 2
+
+# Restart pc
+
+```
+
+#### Install Node
+
+```sh
+
+  # first install Node Version Manager (nvm)
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+  # Run this command, dont ask why
+  source ~/.bashrc
+
+  # Install node version 21.0.0
+  nvm install 21.0.0
+
+  # CHeck node is installed
+  node --version
+
+```
+
+#### Install Make
+
+```sh
+
+  # On ubuntu
+  sudo apt update
+  sudo apt upgrade
+  sudo apt install build-essential
+
+  # Check make is installed
+  make --version
+
+```
+### Download && Install dependencies
+
+```sh
+
+git clone git@github.com:pnoulis/instashop-exercise.git
+
+# The parse server which this project is a dependant of
+# places restrictions to the node version.
+# It needs:
+
+# >=14.21.0 < 17 || >=18 < 20
+
+# However I wan running version 21.0.0 so It propably
+# is not very strict about it.
+
+# Anyway, considering that node does not give you any problems
+# install all depnedencies
+
+npm install
+
+```
 
 ## Developing
+
+### Environment
+
+The project expects to be provided with configuration through
+
+a .env file under the source tree root.
+
+- DB_URI
+
+  Database url for parse server
+
+- APP_ID=
+
+  Credentials for parse server
+
+- MASTER_KEY
+
+  Credentials for parse server
+
+- PUBLIC_SERVER_URL
+
+  Parse server api url
+
+- SERVER_PORT
+
+   Parse server port
+
+- CLIENT_PORT
+
+  Client port
+
+- GMAPS_API_KEY
+
+  Google maps api key
+
+
+### Scripts / Makefile targets
+
+The project makes use of a Makefile but one can still use the npm syntax.
+
+However, note that they are just wrappers for make targets.
+
+
+```sh
+
+# Starts the develompent parse server
+npm run start:server
+# make start-server
+
+# THe dashboard is under /dashboard
+localhost/dashbord
+
+# Starts the development client server
+npm run start:client
+# make start-client
+
+# Build source in productin model
+npm run build
+# make build
+
+```
 
 ## Documentation
 
@@ -190,12 +340,15 @@ The user is offered the following actions:
 
   By clicking the continue as guest anchor
 
-
-
 ## Contact
 
-Pavlos noulis - pavlos.noulis@gmail.commented
+- Pavlos noulis
 
-project link - [instashop](https://github.com/pnoulis/instashop-exercise);
+  pavlos.noulis@gmail.com
 
+  https://github.com/pnoulis
+
+- Project link
+
+  [instashop](https://github.com/pnoulis/instashop-exercise);
 

@@ -13,6 +13,8 @@ SHELL:=/usr/bin/bash
 # Environment
 ##################################################
 loadenv=set -a; source ./.env
+MODE=production
+NODE_ENV=$(MODE)
 
 ##################################################
 ## Application
@@ -31,27 +33,31 @@ buildir=$(srcdir_top)/build
 ##################################################
 ## Programs
 ##################################################
-node:=~/.nvm/versions/node/v20.0.0/bin/node
+node:=npx node
 nodeflags:=--import $(srcdir_top)/debug.js
-tsnode:=~/.nvm/versions/node/v21.0.0/bin/tsx
+tsnode:=npx tsx
 
 all: build
 
 ##################################################
 ## Build
 ##################################################
+build: args?=
 build:
-	@echo build
+	echo NODE_ENV:$(NODE_ENV)
+	ng build -c $(MODE) $(args)
 
 ##################################################
 ## Start
 ##################################################
 start-client: env
 	$(loadenv)
-	ng serve --port $$CLIENT_PORT
+	echo NODE_ENV:$(NODE_ENV)
+	ng serve --port $$CLIENT_PORT -c $(MODE)
 
 start-server:
 	$(loadenv)
+	echo NODE_ENV:$(NODE_ENV)
 	$(node) server/parsed.js
 
 stop-client:
@@ -117,6 +123,7 @@ clean:
 distclean: clean
 	-rm -rf node_modules
 	-rm -f package-lock.json
+	-rm -rf dist
 
 
 # Develop

@@ -27,11 +27,11 @@ class LandmarkService extends LandmarkQuery {
       await land.save(null, {
         sessionToken: user?.['sessionToken'],
       });
+      return _landmark;
     } catch (err) {
       land.revert();
       throw err;
     }
-    return _landmark;
   }
 
   public async getAllLandmarks() {

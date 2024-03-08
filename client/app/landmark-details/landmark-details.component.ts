@@ -169,9 +169,10 @@ export class LandmarkDetailsComponent {
 
   async handleLandmarkUpdate() {
     const landmark = await this.landmarkService.updateLandmark({
-      id: this.landmark.id,
+      ...this.landmark,
       ...this.landmarkForm.value,
     });
     this.landmark = landmark;
+    alert('saved');
   }
 }
